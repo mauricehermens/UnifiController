@@ -42,8 +42,8 @@ Deze Repo bevat een Docker-Compose file om een Unifi Controller te draaien op ee
 -	Open de repository lokaal
     - ``cd “UnifiController``
     - > [!NOTE] 
-> Later kun je (indien noodzakelijk) in deze directory met “git pull” de repository updaten.
+      > Later kun je (indien noodzakelijk) in deze directory met “git pull” de repository updaten.
     
 -	Download en start de containers
     - ``docker-compose up -d``
--	Controlleer of alles juist draait op: ``http://_ip_controller_:9000)
+-	Controlleer of alles juist draait op: ``http://ip_raspberry:9000``
