@@ -40,7 +40,7 @@ services:
         test:
           [
             "CMD",
-            "mongosh",
+            "mongo",
             "--quiet",
             "127.0.0.1/test",
             "--eval",
