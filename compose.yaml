@@ -21,7 +21,7 @@ services:
       - MONGO_TLS= #optional
       - MONGO_AUTHSOURCE= #optional
     volumes:
-      - ./config:/config #hier wordt de configuratie opgeslagen van de Unifi Controller
+      - /home/${USER}/unifi/config:/config #hier wordt de configuratie opgeslagen van de Unifi Controller
     ports:
       - 8443:8443
       - 3478:3478/udp
@@ -51,6 +51,6 @@ services:
         retries: 5
         start_period: 40s
       volumes:
-        - ./db:/data/db #hier wordt de database opgeslagen
+        - /home/${USER}/unifi/db:/data/db #hier wordt de database opgeslagen
         - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
       restart: unless-stopped
