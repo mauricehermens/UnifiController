@@ -2,7 +2,7 @@
 Deze Repo bevat een Docker-Compose file om een Unifi Controller te draaien op een Raspberry Pi.
 
 > [!WARNING]
-> Alleen getest op een **Raspberry Pi 3 Model B Rev 1.2**
+> Alleen getest op een **Raspberry Pi 3 Model B Rev 1.2** waarop alleen MongoDB 4.4.18 en ouder compatible is.
 
 > [!IMPORTANT]
 > De eerste keer dat de containers gestart worden kan het wat langer duren omdat de database gecreeerd moet worden.
@@ -40,10 +40,11 @@ Deze Repo bevat een Docker-Compose file om een Unifi Controller te draaien op ee
 -	Clone deze repository
     - ``git clone https://github.com/mauricehermens/UnifiController.git``
 -	Open de repository lokaal
-    - ``cd “UnifiController``
-    - > [!NOTE] 
-      > Later kun je (indien noodzakelijk) in deze directory met “git pull” de repository updaten.
-    
+    - ``cd UnifiController``   
 -	Download en start de containers
     - ``docker-compose up -d``
 -	Controlleer of alles juist draait op: ``http://ip_raspberry:9000``
+
+
+> [!TIP]
+> Alle statefull data van de controller en MongoDB staan in ``/home/pi/unifi``
