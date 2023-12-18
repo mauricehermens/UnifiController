@@ -1,0 +1,56 @@
+---
+version: "2.1"
+services:
+  unifi-network-application:
+    image: lscr.io/linuxserver/unifi-network-application:latest
+    container_name: unifi-network-application
+    depends_on:
+      unifi-db:
+        condition: service_healthy
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Amsterdam
+      - MONGO_USER=MONGO_UNIFIUSER
+      - MONGO_PASS=KDN#829Dddi
+      - MONGO_HOST=unifi-db
+      - MONGO_PORT=27017
+      - MONGO_DBNAME=unifi
+      - MEM_LIMIT=1024 #optional
+      - MEM_STARTUP=1024 #optional
+      - MONGO_TLS= #optional
+      - MONGO_AUTHSOURCE= #optional
+    volumes:
+      - ./config:/config #hier wordt de configuratie opgeslagen van de Unifi Controller
+    ports:
+      - 8443:8443
+      - 3478:3478/udp
+      - 10001:10001/udp
+      - 8080:8080
+      - 1900:1900/udp #optional
+      - 8843:8843 #optional
+      - 8880:8880 #optional
+      - 6789:6789 #optional
+      - 5514:5514/udp #optional
+    restart: unless-stopped
+  unifi-db:
+      image: docker.io/mongo:5.0.23 #4.4.26
+      container_name: unifi-db
+      healthcheck:
+        test:
+          [
+            "CMD",
+            "mongosh",
+            "--quiet",
+            "127.0.0.1/test",
+            "--eval",
+            "'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)'",
+          ]
+        interval: 10s
+        timeout: 10s
+        retries: 5
+        start_period: 40s
+      volumes:
+        - ./db:/data/db #hier wordt de database opgeslagen
+        - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      restart: unless-stopped
