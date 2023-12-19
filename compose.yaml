@@ -3,7 +3,7 @@ version: "2.1"
 services:
   unifi-network-application:
     image: lscr.io/linuxserver/unifi-network-application:latest
-    cpus: 0.5
+    cpus: 1.0
     container_name: unifi-network-application
     depends_on:
       unifi-db:
