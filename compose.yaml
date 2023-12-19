@@ -17,8 +17,8 @@ services:
       - MONGO_HOST=unifi-db
       - MONGO_PORT=27017
       - MONGO_DBNAME=unifi
-      - MEM_LIMIT=default #optional
-      - MEM_STARTUP=default #optional
+      - MEM_LIMIT=768 #optional
+      - MEM_STARTUP=1024 #optional
       - MONGO_TLS= #optional
       - MONGO_AUTHSOURCE= #optional
     volumes:
