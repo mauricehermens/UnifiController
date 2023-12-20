@@ -2,7 +2,7 @@
 Deze Repo bevat een Docker-Compose file om een Unifi Controller te draaien op een Raspberry Pi.
 
 > [!WARNING]
-> Alleen getest op een **Raspberry Pi 3 Model B Rev 1.2** waarop alleen MongoDB 4.4.18 en ouder compatible is.
+> Alleen getest op een **Raspberry Pi 3 Model B Rev 1.2** & **Raspberry Pi 4 Model B Rev 1.5** waarop alleen MongoDB 4.4.18 en ouder compatible is.
 
 > [!IMPORTANT]
 > De eerste keer dat de containers gestart worden kan het wat langer duren omdat de database gecreeerd moet worden.
